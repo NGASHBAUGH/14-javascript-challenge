@@ -19,7 +19,8 @@ function table(Tdata) {
             row.append('td').text(y).style('border' , 'solid thin black')
         })
     }) 
-}
+};
+
 
 // Runs Date filter
 function runbuttonD () {
@@ -31,18 +32,57 @@ function runbuttonD () {
 
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
+    console.log(inputValue)
+    var newData = {}
+    
+    if(type.node().value === "date") {
+        newData = tableData.filter(function(frow){
+            // console.log(frow.datetime)
+            // console.log(inputValue)
+                return frow.datetime == inputValue
+    })};
+    if(type.node().value === "city") {
+        newData = tableData.filter(function(frow){
+            console.log(frow.city)
+            console.log(inputValue)
+
+                return frow.city == inputValue
+    })};
+    if(type.node().value === "state") {
+        newData = tableData.filter(function(frow){
+            console.log(frow.state)
+            console.log(inputValue)
+                return frow.state == inputValue
+    })};
+    if(type.node().value === "country") {
+        newData = tableData.filter(function(frow){
+            console.log(frow.datetime)
+            console.log(inputValue)
+                return frow.country == inputValue
+    })};
+    if(type.node().value === "shape") {
+        newData = tableData.filter(function(frow){
+            console.log(frow.datetime)
+            console.log(inputValue)
+
+                return frow.shape == inputValue
+    })};
 
 
-    var newData = tableData.filter(function(frow){
-            return frow.datetime == inputValue
-    })
 
     console.log(newData)
     return table(newData)
-
-
 };
 
+
+function change () {
+    var type = d3.select('#filterSelect').property('value');
+    console.log(type)
+    return type
+};
+
+
+type = d3.selectAll('#filterSelect').on('change' , change )
 
 // Activates Date filter
 var buttonD = d3.select('#filter-btn-Date')
