@@ -42,7 +42,6 @@ function runbuttonD () {
         newData = tableData.filter(function(frow){
                 return frow.datetime == inputValue
     })};
-
     if(type.node().value === "city") {
         newData = tableData.filter(function(frow){
                 return frow.city == inputValue
